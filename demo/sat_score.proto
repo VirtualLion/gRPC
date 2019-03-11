@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package satscore;
+
+service SATScoreInfo {
+	rpc GetScore (RequestScore) returns (Score) {}
+
+	rpc AverageScore (stream RequestScore) returns (stream AveScore) {}
+}
+
+message RequestScore {
+	string category = 1;
+	string people = 2;
+	int32 time = 3;
+}
+
+message Score {
+	int32 score = 1;
+}
+
+message AveScore {
+	string category = 1;
+	string people = 2;
+	float score = 3;
+}
